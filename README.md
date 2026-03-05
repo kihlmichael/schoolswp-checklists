@@ -9,18 +9,19 @@ Zéro blabla. Du process.
 - Adapte à ton contexte (stack, niveau, budget)
 
 ## Index
+
 ### SEO
 - [Publication d’article SEO (rank-ready)](seo/checklist-publication-article.md)
 
 ### WordPress
-- [Mise en prod — checklist pro](wordpress/checklist-mise-en-prod.md) *(à venir)*
-- [Maintenance mensuelle](wordpress/checklist-maintenance-mensuelle.md) *(à venir)*
+- Mise en prod — checklist pro *(à venir)*
+- Maintenance mensuelle *(à venir)*
 
 ### Performance
-- [Audit performance (Quick Wins)](performance/checklist-audit-perf.md) *(à venir)*
+- Audit performance (Quick Wins) *(à venir)*
 
 ### Automatisation
-- [Base CRM (tags / segments / séquences)](automation/checklist-base-crm.md) *(à venir)*
+- Base CRM (tags / segments / séquences) *(à venir)*
 
 ## Licence
 CC BY 4.0 — réutilisable avec attribution (merci de citer schoolsWP).
