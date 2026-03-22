@@ -12,6 +12,7 @@ Zéro blabla. Du process.
 
 ### SEO
 - [Publication d’article SEO (rank-ready)](seo/checklist-publication-article.md)
+- [Diffusion réseau social (post-publication)](seo/checklist-diffusion-reseaux-sociaux.md)
 
 ### WordPress
 - Mise en prod — checklist pro *(à venir)*
