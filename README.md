@@ -13,6 +13,9 @@ Zéro blabla. Du process.
 ### SEO
 - [Publication d’article SEO (rank-ready)](seo/checklist-publication-article.md)
 
+### Vidéo
+- [SOP — Fabrique vidéo schoolsWP (HyperFrames)](video/sop-video-factory-hyperframes.md)
+
 ### WordPress
 - Mise en prod — checklist pro *(à venir)*
 - Maintenance mensuelle *(à venir)*
