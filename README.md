@@ -15,10 +15,14 @@ Zéro blabla. Du process.
 ### SEO
 - [Publication d’article SEO (rank-ready)](seo/checklist-publication-article.md)
 
+### WordPress
+- [Mise en production (go-live pro)](wordpress/checklist-mise-en-prod.md)
+- [Maintenance mensuelle](wordpress/checklist-maintenance-mensuelle.md)
+
+### Performance
+- [Audit performance (Quick Wins)](performance/checklist-audit-quick-wins.md)
+
 ## Roadmap (prochaines checklists)
-- WordPress — Mise en prod (checklist pro)
-- WordPress — Maintenance mensuelle
-- Performance — Audit (Quick Wins)
 - Automatisation — Base CRM (tags / segments / séquences)
 
 ## Licence
