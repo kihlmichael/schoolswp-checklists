@@ -22,8 +22,8 @@ Zéro blabla. Du process.
 ### Performance
 - [Audit performance (Quick Wins)](performance/checklist-audit-quick-wins.md)
 
-## Roadmap (prochaines checklists)
-- Automatisation — Base CRM (tags / segments / séquences)
+### Automatisation
+- [Base CRM (tags / segments / séquences)](automatisation/checklist-base-crm.md)
 
 ## Licence
 CC BY 4.0 — réutilisable avec attribution (merci de citer schoolsWP).
