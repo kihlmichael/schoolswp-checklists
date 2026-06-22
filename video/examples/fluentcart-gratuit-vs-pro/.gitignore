@@ -1,0 +1,7 @@
+# Fichiers générés par HyperFrames (ne pas versionner)
+# index.html = copie de travail de composition.html (recréée via Copy-Item)
+index.html
+.thumbnails/
+*.mp4
+*.webm
+*.mov
