@@ -51,16 +51,15 @@ npx hyperframes preview
 npx hyperframes render --gpu --quality standard --output fluentcart-gratuit-vs-pro_9x16.mp4
 ```
 
-## Branding (v2)
-- Identité **noir & blanc épurée** (logos officiels : *white* / *black sans contour*).
-- **Logo officiel** utilisé dans l'outro et le lower third (plus de texte « schoolsWP »).
+## Branding (v3 — charte officielle schoolsWP)
+- **Vert accent** `#00d400` (vif) / `#00a100` (foncé) sur **fond sombre** `#12111f` / `#212121`.
+- Gris froids `#57556d` / `#8f8da5` pour le texte secondaire ; blancs `#fafbfd` / `#f4f6fb`.
+- **Logo officiel** (white) dans l'outro et le lower third (plus de texte « schoolsWP »).
   - URL blanche : `https://schoolswp.com/wp-content/uploads/2022/06/cropped-cropped-logo-schoolsWP-nom-white-sans-contour.png`
   - URL noire : `https://schoolswp.com/wp-content/uploads/2022/06/logo-schoolsWP-nom-black-sans-contour-1.png`
-- Palette monochrome (Pro = blanc net / Gratuit = gris), boutons retravaillés (fini l'indigo/teal).
-- Accent paramétrable via la variable CSS `--accent` (défaut neutre).
+- Pro = vert schoolsWP · Gratuit = gris froid. Vert sur kicker, labels, badges, tag Pro, URL.
 
 ## Réglages à vérifier / ajuster
-- [ ] **Accent de marque** : si tu as un hex officiel, change `--accent` (1 ligne) et je l'étends aux badges/tags.
 - [ ] **Logo en local** : pour un rendu hors-ligne/déterministe, télécharge le PNG dans le projet et remplace l'URL par un chemin local (`./assets/logo-schoolswp.png`).
 - [ ] Police : `Inter` (fallback système) — embarquer la vraie webfont schoolsWP si tu veux le rendu exact.
 - [ ] Lisibilité mobile (taille texte, marges safe) — juger sur le **rendu final**, pas la preview.

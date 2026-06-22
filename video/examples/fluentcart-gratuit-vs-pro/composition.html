@@ -4,12 +4,10 @@
   Sujet : FluentCart Gratuit vs Pro (source : https://schoolswp.com/fluentcart-gratuit-vs-pro/)
   Format : vertical 9:16 — 1080x1920 — ~20 s @ 30 fps
 
-  Branding :
-    - Identité épurée noir & blanc (logos officiels = "white" / "black sans contour").
-    - Logo OFFICIEL utilisé dans l'outro et le lower third (plus de texte "schoolsWP").
-    - Palette monochrome : Pro = blanc net, Gratuit = gris. Boutons retravaillés (outline propre).
-    - Couleur d'accent paramétrable via --accent (défaut neutre). Si tu as un hex de marque,
-      change juste cette variable — tout suit.
+  Branding (charte officielle schoolsWP) :
+    - Vert accent #00d400 / #00a100 sur fond sombre #12111f / #212121, gris froids #57556d/#8f8da5.
+    - Logo OFFICIEL (white) dans l'outro et le lower third (plus de texte "schoolsWP").
+    - Pro = vert schoolsWP, Gratuit = gris froid.
 
   Timeline (s) :
     0–3 Hook · 3–7 Pts 1+2 · 7–11 Pts 3+4 · 11–14 Pt 5 · 14–17 Verdict · 17–20 Outro · 0–20 Lower third
@@ -19,15 +17,18 @@
 <meta charset="utf-8" />
 <style>
   :root {
-    --bg-1: #0a0a0c;
-    --bg-2: #17181d;
-    --text: #ffffff;
-    --muted: #9aa0ad;
-    --line: rgba(255,255,255,.14);
-    --panel: rgba(255,255,255,.045);
-    --pro: #ffffff;     /* "Pro" mis en avant */
-    --free: #717784;    /* "Gratuit" en retrait */
-    --accent: #ffffff;  /* accent neutre par défaut — remplace par le hex de marque si besoin */
+    /* Charte officielle schoolsWP */
+    --bg-1: #12111f;        /* fond sombre principal (noir bleuté) */
+    --bg-2: #212121;        /* fond sombre alternatif */
+    --text: #fafbfd;        /* blanc cassé */
+    --muted: #8f8da5;       /* gris-violet clair */
+    --muted-strong: #57556d;/* gris-violet foncé */
+    --line: rgba(143,141,165,.28);
+    --panel: rgba(250,251,253,.045);
+    --accent: #00d400;      /* vert schoolsWP (vif) */
+    --accent-2: #00a100;    /* vert schoolsWP (foncé) */
+    --pro: var(--accent);   /* "Pro" = vert schoolsWP */
+    --free: #8f8da5;        /* "Gratuit" = gris froid */
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -56,16 +57,16 @@
 
   /* ----- Typo ----- */
   .kicker {
-    font-size: 38px; font-weight: 700; letter-spacing: .26em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 30px;
+    font-size: 38px; font-weight: 800; letter-spacing: .26em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 30px;
   }
   .title { font-size: 138px; font-weight: 800; line-height: 1.0; letter-spacing: -.01em; }
   .title .vs { color: var(--muted); font-weight: 600; }
   .subtitle { font-size: 46px; color: var(--muted); margin-top: 40px; font-weight: 500; }
 
   .scene-label {
-    font-size: 36px; font-weight: 700; letter-spacing: .22em;
-    text-transform: uppercase; color: var(--muted); margin-bottom: 56px;
+    font-size: 36px; font-weight: 800; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 56px;
   }
 
   /* Cartes "feature" — épurées, monochrome */
@@ -77,7 +78,7 @@
   .card .badge {
     display: inline-block; font-size: 28px; font-weight: 800; letter-spacing: .08em;
     padding: 9px 22px; border-radius: 999px; margin-bottom: 24px;
-    background: var(--pro); color: #0a0a0c;
+    background: var(--pro); color: #12111f;
   }
   .card h3 { font-size: 60px; font-weight: 800; line-height: 1.08; }
   .card p  { font-size: 39px; color: var(--muted); margin-top: 16px; line-height: 1.3; }
@@ -93,15 +94,15 @@
     flex: 0 0 auto; font-size: 38px; font-weight: 800; letter-spacing: .06em;
     padding: 12px 26px; border-radius: 14px;
   }
-  .tag-free { background: rgba(113,119,132,.18); color: var(--free); border: 1px solid var(--line); }
-  .tag-pro  { background: var(--pro); color: #0a0a0c; }
+  .tag-free { background: rgba(143,141,165,.16); color: var(--free); border: 1px solid var(--line); }
+  .tag-pro  { background: var(--pro); color: #12111f; }
   .verdict .row p { font-size: 41px; line-height: 1.25; }
 
   /* Outro — logo officiel + CTA */
   .outro .brand-logo { width: 640px; height: auto; }
   .outro .url {
-    margin-top: 52px; font-size: 50px; font-weight: 700; letter-spacing: .02em;
-    color: var(--text); opacity: .92;
+    margin-top: 52px; font-size: 50px; font-weight: 800; letter-spacing: .02em;
+    color: var(--accent);
   }
   .outro .cta { margin-top: 30px; font-size: 40px; color: var(--muted); }
 
