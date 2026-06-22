@@ -1,142 +1,118 @@
 <!doctype html>
 <!--
-  HyperFrames — Composition MVP schoolsWP
+  HyperFrames — Composition MVP schoolsWP  (v2 : branding schoolsWP)
   Sujet : FluentCart Gratuit vs Pro (source : https://schoolswp.com/fluentcart-gratuit-vs-pro/)
   Format : vertical 9:16 — 1080x1920 — ~20 s @ 30 fps
 
-  Timeline (en secondes) :
-    0–3   Hook        : "FluentCart — Gratuit vs Pro ?"
-    3–7   Points 1+2  : Tunnels de vente / Abonnements avancés
-    7–11  Points 3+4  : Licences logicielles / Rapports avancés
-    11–14 Point 5     : Intégration FluentCRM
-    14–17 Verdict     : Gratuit si... / Pro si...
-    17–20 Outro/CTA   : schoolswp.com
-    0–20  Lower third : "Michaël KIHL — schoolsWP" (persistant)
+  Branding :
+    - Identité épurée noir & blanc (logos officiels = "white" / "black sans contour").
+    - Logo OFFICIEL utilisé dans l'outro et le lower third (plus de texte "schoolsWP").
+    - Palette monochrome : Pro = blanc net, Gratuit = gris. Boutons retravaillés (outline propre).
+    - Couleur d'accent paramétrable via --accent (défaut neutre). Si tu as un hex de marque,
+      change juste cette variable — tout suit.
 
-  Notes :
-    - Chaque scène = un .clip avec data-start / data-duration / data-track-index.
-    - Animations d'entrée en CSS (seekables par le moteur Chrome d'HyperFrames).
-    - À valider sur le ROG : `npx hyperframes validate` puis `preview`. Ajuste si le
-      runtime attend une syntaxe d'attributs différente (voir doctor/catalog).
+  Timeline (s) :
+    0–3 Hook · 3–7 Pts 1+2 · 7–11 Pts 3+4 · 11–14 Pt 5 · 14–17 Verdict · 17–20 Outro · 0–20 Lower third
 -->
 <html lang="fr">
 <head>
 <meta charset="utf-8" />
 <style>
   :root {
-    --bg-1: #0b1020;
-    --bg-2: #131a33;
-    --accent: #6c8cff;   /* indigo schoolsWP */
-    --accent-2: #29d3a8; /* teal "Pro" */
-    --free: #9aa4c2;     /* gris "Gratuit" */
-    --text: #f5f7ff;
-    --muted: #aab2cf;
+    --bg-1: #0a0a0c;
+    --bg-2: #17181d;
+    --text: #ffffff;
+    --muted: #9aa0ad;
+    --line: rgba(255,255,255,.14);
+    --panel: rgba(255,255,255,.045);
+    --pro: #ffffff;     /* "Pro" mis en avant */
+    --free: #717784;    /* "Gratuit" en retrait */
+    --accent: #ffffff;  /* accent neutre par défaut — remplace par le hex de marque si besoin */
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html, body { width: 1080px; height: 1920px; }
 
   body {
     font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     color: var(--text);
-    background: radial-gradient(120% 80% at 50% 0%, var(--bg-2) 0%, var(--bg-1) 60%);
+    background: radial-gradient(125% 75% at 50% 0%, var(--bg-2) 0%, var(--bg-1) 62%);
     overflow: hidden;
   }
 
-  /* Chaque clip occupe tout le canvas et se centre */
   .clip {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 90px;
-    text-align: center;
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 120px 90px; text-align: center;
   }
 
   /* ----- Animations d'entrée (seekables) ----- */
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(48px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes pop {
-    from { opacity: 0; transform: scale(0.9); }
-    to   { opacity: 1; transform: scale(1); }
-  }
-  .anim-rise { animation: rise 0.6s cubic-bezier(.22,1,.36,1) both; }
-  .anim-pop  { animation: pop  0.5s cubic-bezier(.22,1,.36,1) both; }
-  .d1 { animation-delay: .12s; }
-  .d2 { animation-delay: .26s; }
-  .d3 { animation-delay: .40s; }
+  @keyframes rise { from { opacity:0; transform:translateY(48px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes pop  { from { opacity:0; transform:scale(.92); }       to { opacity:1; transform:scale(1); } }
+  .anim-rise { animation: rise .6s cubic-bezier(.22,1,.36,1) both; }
+  .anim-pop  { animation: pop  .5s cubic-bezier(.22,1,.36,1) both; }
+  .d1 { animation-delay:.12s; } .d2 { animation-delay:.26s; } .d3 { animation-delay:.40s; }
 
   /* ----- Typo ----- */
   .kicker {
-    font-size: 40px; font-weight: 700; letter-spacing: .18em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 28px;
+    font-size: 38px; font-weight: 700; letter-spacing: .26em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 30px;
   }
-  .title { font-size: 132px; font-weight: 800; line-height: 1.02; }
-  .title .vs { color: var(--accent-2); }
-  .subtitle { font-size: 46px; color: var(--muted); margin-top: 36px; font-weight: 500; }
+  .title { font-size: 138px; font-weight: 800; line-height: 1.0; letter-spacing: -.01em; }
+  .title .vs { color: var(--muted); font-weight: 600; }
+  .subtitle { font-size: 46px; color: var(--muted); margin-top: 40px; font-weight: 500; }
 
   .scene-label {
-    font-size: 38px; font-weight: 700; letter-spacing: .14em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 56px;
+    font-size: 36px; font-weight: 700; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 56px;
   }
 
-  /* Cartes "feature" */
+  /* Cartes "feature" — épurées, monochrome */
   .card {
-    width: 100%;
-    background: rgba(255,255,255,.05);
-    border: 2px solid rgba(108,140,255,.25);
-    border-radius: 32px;
-    padding: 56px 48px;
-    margin: 18px 0;
-    text-align: left;
+    width: 100%; background: var(--panel);
+    border: 1px solid var(--line); border-radius: 28px;
+    padding: 54px 48px; margin: 18px 0; text-align: left;
   }
   .card .badge {
-    display: inline-block; font-size: 30px; font-weight: 800;
-    padding: 10px 24px; border-radius: 999px; margin-bottom: 24px;
-    background: rgba(41,211,168,.16); color: var(--accent-2);
-    border: 2px solid rgba(41,211,168,.4);
+    display: inline-block; font-size: 28px; font-weight: 800; letter-spacing: .08em;
+    padding: 9px 22px; border-radius: 999px; margin-bottom: 24px;
+    background: var(--pro); color: #0a0a0c;
   }
-  .card h3 { font-size: 60px; font-weight: 800; line-height: 1.1; }
-  .card p  { font-size: 40px; color: var(--muted); margin-top: 18px; line-height: 1.3; }
+  .card h3 { font-size: 60px; font-weight: 800; line-height: 1.08; }
+  .card p  { font-size: 39px; color: var(--muted); margin-top: 16px; line-height: 1.3; }
 
-  /* Verdict : deux colonnes */
-  .verdict { width: 100%; display: flex; flex-direction: column; gap: 28px; }
+  /* Verdict */
+  .verdict { width: 100%; display: flex; flex-direction: column; gap: 26px; }
   .verdict .row {
-    display: flex; align-items: center; gap: 32px;
-    background: rgba(255,255,255,.05); border-radius: 28px; padding: 44px 40px;
-    text-align: left;
+    display: flex; align-items: center; gap: 30px;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 26px; padding: 42px 38px; text-align: left;
   }
   .verdict .tag {
-    flex: 0 0 auto; font-size: 40px; font-weight: 800;
-    padding: 14px 28px; border-radius: 16px;
+    flex: 0 0 auto; font-size: 38px; font-weight: 800; letter-spacing: .06em;
+    padding: 12px 26px; border-radius: 14px;
   }
-  .tag-free { background: rgba(154,164,194,.2); color: var(--free); }
-  .tag-pro  { background: rgba(41,211,168,.2); color: var(--accent-2); }
-  .verdict .row p { font-size: 42px; line-height: 1.25; }
+  .tag-free { background: rgba(113,119,132,.18); color: var(--free); border: 1px solid var(--line); }
+  .tag-pro  { background: var(--pro); color: #0a0a0c; }
+  .verdict .row p { font-size: 41px; line-height: 1.25; }
 
-  /* Outro */
-  .outro .logo { font-size: 150px; font-weight: 800; }
+  /* Outro — logo officiel + CTA */
+  .outro .brand-logo { width: 640px; height: auto; }
   .outro .url {
-    margin-top: 40px; font-size: 56px; font-weight: 700; color: var(--accent);
-    padding: 22px 48px; border: 3px solid var(--accent); border-radius: 999px;
+    margin-top: 52px; font-size: 50px; font-weight: 700; letter-spacing: .02em;
+    color: var(--text); opacity: .92;
   }
-  .outro .cta { margin-top: 44px; font-size: 44px; color: var(--muted); }
+  .outro .cta { margin-top: 30px; font-size: 40px; color: var(--muted); }
 
-  /* Lower third persistant */
+  /* Lower third persistant — petit logo officiel + nom */
   .lower-third {
     position: absolute; left: 0; right: 0; bottom: 90px;
-    display: flex; align-items: center; justify-content: center; gap: 22px;
+    display: flex; align-items: center; justify-content: center; gap: 26px;
   }
-  .lower-third .dot { width: 22px; height: 22px; border-radius: 50%; background: var(--accent-2); }
-  .lower-third .name { font-size: 44px; font-weight: 700; }
-  .lower-third .name b { color: var(--accent); }
+  .lower-third .lt-logo { height: 52px; width: auto; opacity: .95; }
+  .lower-third .sep { width: 2px; height: 44px; background: var(--line); }
+  .lower-third .name { font-size: 42px; font-weight: 600; color: var(--text); }
 </style>
 </head>
 <body>
@@ -156,12 +132,12 @@
     <section class="clip" data-start="3" data-duration="4" data-track-index="1">
       <div class="scene-label anim-rise">Réservé au Pro</div>
       <div class="card anim-pop d1">
-        <span class="badge">Pro</span>
+        <span class="badge">PRO</span>
         <h3>Tunnels de vente</h3>
         <p>Upsells &amp; downsells post-achat (absents du gratuit).</p>
       </div>
       <div class="card anim-pop d2">
-        <span class="badge">Pro</span>
+        <span class="badge">PRO</span>
         <h3>Abonnements avancés</h3>
         <p>Frais d'installation, essais, synchro CRM des statuts.</p>
       </div>
@@ -171,12 +147,12 @@
     <section class="clip" data-start="7" data-duration="4" data-track-index="1">
       <div class="scene-label anim-rise">Réservé au Pro</div>
       <div class="card anim-pop d1">
-        <span class="badge">Pro</span>
+        <span class="badge">PRO</span>
         <h3>Licences logicielles</h3>
         <p>Génération de licences pour les éditeurs de logiciels.</p>
       </div>
       <div class="card anim-pop d2">
-        <span class="badge">Pro</span>
+        <span class="badge">PRO</span>
         <h3>Rapports avancés</h3>
         <p>Analyses par produit &amp; client (vs 30 jours en gratuit).</p>
       </div>
@@ -186,7 +162,7 @@
     <section class="clip" data-start="11" data-duration="3" data-track-index="1">
       <div class="scene-label anim-rise">L'atout décisif</div>
       <div class="card anim-pop d1">
-        <span class="badge">Pro</span>
+        <span class="badge">PRO</span>
         <h3>FluentCRM poussé</h3>
         <p>Déclencheurs marketing automatisés selon le comportement d'achat.</p>
       </div>
@@ -207,18 +183,23 @@
       </div>
     </section>
 
-    <!-- 17–20s — OUTRO / CTA -->
+    <!-- 17–20s — OUTRO / CTA (logo officiel) -->
     <section class="clip outro" data-start="17" data-duration="3" data-track-index="1">
-      <div class="logo anim-pop">schoolsWP</div>
+      <img class="brand-logo anim-pop"
+           src="https://schoolswp.com/wp-content/uploads/2022/06/cropped-cropped-logo-schoolsWP-nom-white-sans-contour.png"
+           alt="schoolsWP" />
       <div class="url anim-rise d1">schoolswp.com</div>
       <div class="cta anim-rise d2">Le guide complet en description ↗</div>
     </section>
 
-    <!-- 0–20s — LOWER THIRD persistant (track 2) -->
+    <!-- 0–20s — LOWER THIRD persistant (logo officiel + nom) -->
     <div class="lower-third clip" data-start="0" data-duration="20" data-track-index="2"
          style="position:absolute; inset:auto 0 90px 0; padding:0; flex-direction:row;">
-      <span class="dot"></span>
-      <span class="name">Michaël KIHL — <b>schoolsWP</b></span>
+      <img class="lt-logo"
+           src="https://schoolswp.com/wp-content/uploads/2022/06/cropped-cropped-logo-schoolsWP-nom-white-sans-contour.png"
+           alt="schoolsWP" />
+      <span class="sep"></span>
+      <span class="name">Michaël KIHL</span>
     </div>
 
   </div>
