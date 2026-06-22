@@ -1,0 +1,209 @@
+<!doctype html>
+<!--
+  HyperFrames — Composition MVP schoolsWP  (v2 : branding schoolsWP)
+  Sujet : FluentCart Gratuit vs Pro (source : https://schoolswp.com/fluentcart-gratuit-vs-pro/)
+  Format : vertical 9:16 — 1080x1920 — ~20 s @ 30 fps
+
+  Branding (charte officielle schoolsWP) :
+    - Vert accent #00d400 / #00a100 sur fond sombre #12111f / #212121, gris froids #57556d/#8f8da5.
+    - Logo OFFICIEL (white) dans l'outro et le lower third (plus de texte "schoolsWP").
+    - Pro = vert schoolsWP, Gratuit = gris froid.
+
+  Timeline (s) :
+    0–3 Hook · 3–7 Pts 1+2 · 7–11 Pts 3+4 · 11–14 Pt 5 · 14–17 Verdict · 17–20 Outro · 0–20 Lower third
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<style>
+  :root {
+    /* Charte officielle schoolsWP */
+    --bg-1: #12111f;        /* fond sombre principal (noir bleuté) */
+    --bg-2: #212121;        /* fond sombre alternatif */
+    --text: #fafbfd;        /* blanc cassé */
+    --muted: #8f8da5;       /* gris-violet clair */
+    --muted-strong: #57556d;/* gris-violet foncé */
+    --line: rgba(143,141,165,.28);
+    --panel: rgba(250,251,253,.045);
+    --accent: #00d400;      /* vert schoolsWP (vif) */
+    --accent-2: #00a100;    /* vert schoolsWP (foncé) */
+    --pro: var(--accent);   /* "Pro" = vert schoolsWP */
+    --free: #8f8da5;        /* "Gratuit" = gris froid */
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; }
+
+  body {
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    background: radial-gradient(125% 75% at 50% 0%, var(--bg-2) 0%, var(--bg-1) 62%);
+    overflow: hidden;
+  }
+
+  .clip {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 120px 90px; text-align: center;
+  }
+
+  /* ----- Animations d'entrée (seekables) ----- */
+  @keyframes rise { from { opacity:0; transform:translateY(48px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes pop  { from { opacity:0; transform:scale(.92); }       to { opacity:1; transform:scale(1); } }
+  .anim-rise { animation: rise .6s cubic-bezier(.22,1,.36,1) both; }
+  .anim-pop  { animation: pop  .5s cubic-bezier(.22,1,.36,1) both; }
+  .d1 { animation-delay:.12s; } .d2 { animation-delay:.26s; } .d3 { animation-delay:.40s; }
+
+  /* ----- Typo ----- */
+  .kicker {
+    font-size: 38px; font-weight: 800; letter-spacing: .26em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 30px;
+  }
+  .title { font-size: 138px; font-weight: 800; line-height: 1.0; letter-spacing: -.01em; }
+  .title .vs { color: var(--muted); font-weight: 600; }
+  .subtitle { font-size: 46px; color: var(--muted); margin-top: 40px; font-weight: 500; }
+
+  .scene-label {
+    font-size: 36px; font-weight: 800; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 56px;
+  }
+
+  /* Cartes "feature" — épurées, monochrome */
+  .card {
+    width: 100%; background: var(--panel);
+    border: 1px solid var(--line); border-radius: 28px;
+    padding: 54px 48px; margin: 18px 0; text-align: left;
+  }
+  .card .badge {
+    display: inline-block; font-size: 28px; font-weight: 800; letter-spacing: .08em;
+    padding: 9px 22px; border-radius: 999px; margin-bottom: 24px;
+    background: var(--pro); color: #12111f;
+  }
+  .card h3 { font-size: 60px; font-weight: 800; line-height: 1.08; }
+  .card p  { font-size: 39px; color: var(--muted); margin-top: 16px; line-height: 1.3; }
+
+  /* Verdict */
+  .verdict { width: 100%; display: flex; flex-direction: column; gap: 26px; }
+  .verdict .row {
+    display: flex; align-items: center; gap: 30px;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 26px; padding: 42px 38px; text-align: left;
+  }
+  .verdict .tag {
+    flex: 0 0 auto; font-size: 38px; font-weight: 800; letter-spacing: .06em;
+    padding: 12px 26px; border-radius: 14px;
+  }
+  .tag-free { background: rgba(143,141,165,.16); color: var(--free); border: 1px solid var(--line); }
+  .tag-pro  { background: var(--pro); color: #12111f; }
+  .verdict .row p { font-size: 41px; line-height: 1.25; }
+
+  /* Outro — logo officiel + CTA */
+  .outro .brand-logo { width: 640px; height: auto; }
+  .outro .url {
+    margin-top: 52px; font-size: 50px; font-weight: 800; letter-spacing: .02em;
+    color: var(--accent);
+  }
+  .outro .cta { margin-top: 30px; font-size: 40px; color: var(--muted); }
+
+  /* Lower third persistant — petit logo officiel + nom */
+  .lower-third {
+    position: absolute; left: 0; right: 0; bottom: 90px;
+    display: flex; align-items: center; justify-content: center; gap: 26px;
+  }
+  .lower-third .lt-logo { height: 52px; width: auto; opacity: .95; }
+  .lower-third .sep { width: 2px; height: 44px; background: var(--line); }
+  .lower-third .name { font-size: 42px; font-weight: 600; color: var(--text); }
+</style>
+</head>
+<body>
+
+  <!-- ============ COMPOSITION ============ -->
+  <div data-composition-id="fluentcart-gratuit-vs-pro"
+       data-width="1080" data-height="1920" data-fps="30">
+
+    <!-- 0–3s — HOOK -->
+    <section class="clip" data-start="0" data-duration="3" data-track-index="1">
+      <div class="kicker anim-rise">FluentCart</div>
+      <h1 class="title anim-rise d1">Gratuit<br><span class="vs">vs</span> Pro&nbsp;?</h1>
+      <p class="subtitle anim-rise d2">Laquelle choisir vraiment&nbsp;?</p>
+    </section>
+
+    <!-- 3–7s — POINTS 1 & 2 -->
+    <section class="clip" data-start="3" data-duration="4" data-track-index="1">
+      <div class="scene-label anim-rise">Réservé au Pro</div>
+      <div class="card anim-pop d1">
+        <span class="badge">PRO</span>
+        <h3>Tunnels de vente</h3>
+        <p>Upsells &amp; downsells post-achat (absents du gratuit).</p>
+      </div>
+      <div class="card anim-pop d2">
+        <span class="badge">PRO</span>
+        <h3>Abonnements avancés</h3>
+        <p>Frais d'installation, essais, synchro CRM des statuts.</p>
+      </div>
+    </section>
+
+    <!-- 7–11s — POINTS 3 & 4 -->
+    <section class="clip" data-start="7" data-duration="4" data-track-index="1">
+      <div class="scene-label anim-rise">Réservé au Pro</div>
+      <div class="card anim-pop d1">
+        <span class="badge">PRO</span>
+        <h3>Licences logicielles</h3>
+        <p>Génération de licences pour les éditeurs de logiciels.</p>
+      </div>
+      <div class="card anim-pop d2">
+        <span class="badge">PRO</span>
+        <h3>Rapports avancés</h3>
+        <p>Analyses par produit &amp; client (vs 30 jours en gratuit).</p>
+      </div>
+    </section>
+
+    <!-- 11–14s — POINT 5 -->
+    <section class="clip" data-start="11" data-duration="3" data-track-index="1">
+      <div class="scene-label anim-rise">L'atout décisif</div>
+      <div class="card anim-pop d1">
+        <span class="badge">PRO</span>
+        <h3>FluentCRM poussé</h3>
+        <p>Déclencheurs marketing automatisés selon le comportement d'achat.</p>
+      </div>
+    </section>
+
+    <!-- 14–17s — VERDICT -->
+    <section class="clip" data-start="14" data-duration="3" data-track-index="1">
+      <div class="scene-label anim-rise">Le verdict</div>
+      <div class="verdict">
+        <div class="row anim-rise d1">
+          <span class="tag tag-free">Gratuit</span>
+          <p>Freelance / créateur, quelques produits simples.</p>
+        </div>
+        <div class="row anim-rise d2">
+          <span class="tag tag-pro">Pro</span>
+          <p>Croissance, automatisation marketing, abonnements.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17–20s — OUTRO / CTA (logo officiel) -->
+    <section class="clip outro" data-start="17" data-duration="3" data-track-index="1">
+      <img class="brand-logo anim-pop"
+           src="https://schoolswp.com/wp-content/uploads/2022/06/cropped-cropped-logo-schoolsWP-nom-white-sans-contour.png"
+           alt="schoolsWP" />
+      <div class="url anim-rise d1">schoolswp.com</div>
+      <div class="cta anim-rise d2">Le guide complet en description ↗</div>
+    </section>
+
+    <!-- 0–20s — LOWER THIRD persistant (logo officiel + nom) -->
+    <div class="lower-third clip" data-start="0" data-duration="20" data-track-index="2"
+         style="position:absolute; inset:auto 0 90px 0; padding:0; flex-direction:row;">
+      <img class="lt-logo"
+           src="https://schoolswp.com/wp-content/uploads/2022/06/cropped-cropped-logo-schoolsWP-nom-white-sans-contour.png"
+           alt="schoolsWP" />
+      <span class="sep"></span>
+      <span class="name">Michaël KIHL</span>
+    </div>
+
+  </div>
+
+</body>
+</html>

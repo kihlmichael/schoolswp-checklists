@@ -38,6 +38,9 @@ Chaque checklist suit le même format : des cases à cocher, regroupées par ét
 - [Publication d'article SEO (rank-ready)](seo/checklist-publication-article.md)
 - [Audit SEO technique (les fondations)](seo/checklist-audit-technique.md)
 
+### Vidéo
+- [SOP — Fabrique vidéo schoolsWP (HyperFrames)](video/sop-video-factory-hyperframes.md)
+
 ### WordPress
 - [Mise en production (go-live pro)](wordpress/checklist-mise-en-prod.md)
 - [Maintenance mensuelle](wordpress/checklist-maintenance-mensuelle.md)
