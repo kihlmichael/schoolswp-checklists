@@ -1,0 +1,227 @@
+<!doctype html>
+<!--
+  HyperFrames — Composition MVP schoolsWP
+  Sujet : FluentCart Gratuit vs Pro (source : https://schoolswp.com/fluentcart-gratuit-vs-pro/)
+  Format : vertical 9:16 — 1080x1920 — ~20 s @ 30 fps
+
+  Timeline (en secondes) :
+    0–3   Hook        : "FluentCart — Gratuit vs Pro ?"
+    3–7   Points 1+2  : Tunnels de vente / Abonnements avancés
+    7–11  Points 3+4  : Licences logicielles / Rapports avancés
+    11–14 Point 5     : Intégration FluentCRM
+    14–17 Verdict     : Gratuit si... / Pro si...
+    17–20 Outro/CTA   : schoolswp.com
+    0–20  Lower third : "Michaël KIHL — schoolsWP" (persistant)
+
+  Notes :
+    - Chaque scène = un .clip avec data-start / data-duration / data-track-index.
+    - Animations d'entrée en CSS (seekables par le moteur Chrome d'HyperFrames).
+    - À valider sur le ROG : `npx hyperframes validate` puis `preview`. Ajuste si le
+      runtime attend une syntaxe d'attributs différente (voir doctor/catalog).
+-->
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<style>
+  :root {
+    --bg-1: #0b1020;
+    --bg-2: #131a33;
+    --accent: #6c8cff;   /* indigo schoolsWP */
+    --accent-2: #29d3a8; /* teal "Pro" */
+    --free: #9aa4c2;     /* gris "Gratuit" */
+    --text: #f5f7ff;
+    --muted: #aab2cf;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { width: 1080px; height: 1920px; }
+
+  body {
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--text);
+    background: radial-gradient(120% 80% at 50% 0%, var(--bg-2) 0%, var(--bg-1) 60%);
+    overflow: hidden;
+  }
+
+  /* Chaque clip occupe tout le canvas et se centre */
+  .clip {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 90px;
+    text-align: center;
+  }
+
+  /* ----- Animations d'entrée (seekables) ----- */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(48px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(0.9); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .anim-rise { animation: rise 0.6s cubic-bezier(.22,1,.36,1) both; }
+  .anim-pop  { animation: pop  0.5s cubic-bezier(.22,1,.36,1) both; }
+  .d1 { animation-delay: .12s; }
+  .d2 { animation-delay: .26s; }
+  .d3 { animation-delay: .40s; }
+
+  /* ----- Typo ----- */
+  .kicker {
+    font-size: 40px; font-weight: 700; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 28px;
+  }
+  .title { font-size: 132px; font-weight: 800; line-height: 1.02; }
+  .title .vs { color: var(--accent-2); }
+  .subtitle { font-size: 46px; color: var(--muted); margin-top: 36px; font-weight: 500; }
+
+  .scene-label {
+    font-size: 38px; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 56px;
+  }
+
+  /* Cartes "feature" */
+  .card {
+    width: 100%;
+    background: rgba(255,255,255,.05);
+    border: 2px solid rgba(108,140,255,.25);
+    border-radius: 32px;
+    padding: 56px 48px;
+    margin: 18px 0;
+    text-align: left;
+  }
+  .card .badge {
+    display: inline-block; font-size: 30px; font-weight: 800;
+    padding: 10px 24px; border-radius: 999px; margin-bottom: 24px;
+    background: rgba(41,211,168,.16); color: var(--accent-2);
+    border: 2px solid rgba(41,211,168,.4);
+  }
+  .card h3 { font-size: 60px; font-weight: 800; line-height: 1.1; }
+  .card p  { font-size: 40px; color: var(--muted); margin-top: 18px; line-height: 1.3; }
+
+  /* Verdict : deux colonnes */
+  .verdict { width: 100%; display: flex; flex-direction: column; gap: 28px; }
+  .verdict .row {
+    display: flex; align-items: center; gap: 32px;
+    background: rgba(255,255,255,.05); border-radius: 28px; padding: 44px 40px;
+    text-align: left;
+  }
+  .verdict .tag {
+    flex: 0 0 auto; font-size: 40px; font-weight: 800;
+    padding: 14px 28px; border-radius: 16px;
+  }
+  .tag-free { background: rgba(154,164,194,.2); color: var(--free); }
+  .tag-pro  { background: rgba(41,211,168,.2); color: var(--accent-2); }
+  .verdict .row p { font-size: 42px; line-height: 1.25; }
+
+  /* Outro */
+  .outro .logo { font-size: 150px; font-weight: 800; }
+  .outro .url {
+    margin-top: 40px; font-size: 56px; font-weight: 700; color: var(--accent);
+    padding: 22px 48px; border: 3px solid var(--accent); border-radius: 999px;
+  }
+  .outro .cta { margin-top: 44px; font-size: 44px; color: var(--muted); }
+
+  /* Lower third persistant */
+  .lower-third {
+    position: absolute; left: 0; right: 0; bottom: 90px;
+    display: flex; align-items: center; justify-content: center; gap: 22px;
+  }
+  .lower-third .dot { width: 22px; height: 22px; border-radius: 50%; background: var(--accent-2); }
+  .lower-third .name { font-size: 44px; font-weight: 700; }
+  .lower-third .name b { color: var(--accent); }
+</style>
+</head>
+<body>
+
+  <!-- ============ COMPOSITION ============ -->
+  <div data-composition-id="fluentcart-gratuit-vs-pro"
+       data-width="1080" data-height="1920" data-fps="30">
+
+    <!-- 0–3s — HOOK -->
+    <section class="clip" data-start="0" data-duration="3" data-track-index="1">
+      <div class="kicker anim-rise">FluentCart</div>
+      <h1 class="title anim-rise d1">Gratuit<br><span class="vs">vs</span> Pro&nbsp;?</h1>
+      <p class="subtitle anim-rise d2">Laquelle choisir vraiment&nbsp;?</p>
+    </section>
+
+    <!-- 3–7s — POINTS 1 & 2 -->
+    <section class="clip" data-start="3" data-duration="4" data-track-index="1">
+      <div class="scene-label anim-rise">Réservé au Pro</div>
+      <div class="card anim-pop d1">
+        <span class="badge">Pro</span>
+        <h3>Tunnels de vente</h3>
+        <p>Upsells &amp; downsells post-achat (absents du gratuit).</p>
+      </div>
+      <div class="card anim-pop d2">
+        <span class="badge">Pro</span>
+        <h3>Abonnements avancés</h3>
+        <p>Frais d'installation, essais, synchro CRM des statuts.</p>
+      </div>
+    </section>
+
+    <!-- 7–11s — POINTS 3 & 4 -->
+    <section class="clip" data-start="7" data-duration="4" data-track-index="1">
+      <div class="scene-label anim-rise">Réservé au Pro</div>
+      <div class="card anim-pop d1">
+        <span class="badge">Pro</span>
+        <h3>Licences logicielles</h3>
+        <p>Génération de licences pour les éditeurs de logiciels.</p>
+      </div>
+      <div class="card anim-pop d2">
+        <span class="badge">Pro</span>
+        <h3>Rapports avancés</h3>
+        <p>Analyses par produit &amp; client (vs 30 jours en gratuit).</p>
+      </div>
+    </section>
+
+    <!-- 11–14s — POINT 5 -->
+    <section class="clip" data-start="11" data-duration="3" data-track-index="1">
+      <div class="scene-label anim-rise">L'atout décisif</div>
+      <div class="card anim-pop d1">
+        <span class="badge">Pro</span>
+        <h3>FluentCRM poussé</h3>
+        <p>Déclencheurs marketing automatisés selon le comportement d'achat.</p>
+      </div>
+    </section>
+
+    <!-- 14–17s — VERDICT -->
+    <section class="clip" data-start="14" data-duration="3" data-track-index="1">
+      <div class="scene-label anim-rise">Le verdict</div>
+      <div class="verdict">
+        <div class="row anim-rise d1">
+          <span class="tag tag-free">Gratuit</span>
+          <p>Freelance / créateur, quelques produits simples.</p>
+        </div>
+        <div class="row anim-rise d2">
+          <span class="tag tag-pro">Pro</span>
+          <p>Croissance, automatisation marketing, abonnements.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 17–20s — OUTRO / CTA -->
+    <section class="clip outro" data-start="17" data-duration="3" data-track-index="1">
+      <div class="logo anim-pop">schoolsWP</div>
+      <div class="url anim-rise d1">schoolswp.com</div>
+      <div class="cta anim-rise d2">Le guide complet en description ↗</div>
+    </section>
+
+    <!-- 0–20s — LOWER THIRD persistant (track 2) -->
+    <div class="lower-third clip" data-start="0" data-duration="20" data-track-index="2"
+         style="position:absolute; inset:auto 0 90px 0; padding:0; flex-direction:row;">
+      <span class="dot"></span>
+      <span class="name">Michaël KIHL — <b>schoolsWP</b></span>
+    </div>
+
+  </div>
+
+</body>
+</html>
